@@ -14,7 +14,7 @@ class AtRobotController {
       await AtRobotController.checkIsDingtalk(appSecret, sign, timestamp)
       
       // 往数据库存 @ 记录
-      AtRecordService.createRecord(appKey, name, ctx.request.body)
+      AtRecordService.createAtRecord(appKey, name, ctx.request.body)
 
       ctx.body = await AtRobotService.atRobot(ctx, apiUrl, name)
     } catch (error) {

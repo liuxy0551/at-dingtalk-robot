@@ -50,7 +50,7 @@ const setCtxBody = (code = 200, data, message = '成功', extraParams) => {
 
 // 获取当前时间 2021-05-20 09:18:23:112
 const getNow = (time = new Date().getTime(), hasMilliSecond = true) => {
-  const date = getDate(0, '--')
+  const date = getDate(0, '-')
   let hour = new Date(time).getHours()
   let minute = new Date(time).getMinutes()
   let second = new Date(time).getSeconds()

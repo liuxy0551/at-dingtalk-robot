@@ -12,7 +12,7 @@ class AtRecordService {
         atRecordId,
         appKey,
         robotName,
-        content: text.content.replace(/^\s*|\s*$/g, '').slice(0, 500),
+        content: text.content.replace(/^\s*|\s*$/g, '').slice(0, 1000),
         createAt: getNow(createAt, false),
         conversationType: ['单聊', '群聊'][Number(conversationType) - 1],
         conversationTitle,
