@@ -6,7 +6,8 @@
       </el-form-item>
       <el-form-item label="回复时间">
         <el-date-picker size="mini" v-model="searchForm.replyTime" type="datetimerange" start-placeholder="开始时间" clearable
-          end-placeholder="结束时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" :default-time="['09:00:00', '18:00:00']" />
+          end-placeholder="结束时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" :default-time="['09:00:00', '18:00:00']"
+          @change="handleChange" />
       </el-form-item>
     </div>
     <div>
@@ -30,6 +31,9 @@ export default {
     }
   },
   methods: {
+    handleChange (replyTime = ['', '']) {
+      this.onSearch()
+    },
     onReset() {
       this.searchForm = {
         msg: '',
@@ -38,7 +42,8 @@ export default {
       this.$emit('fetchData')
     },
     onSearch() {
-      const { msg, replyTime } = this.searchForm
+      let { msg, replyTime } = this.searchForm
+      !replyTime && (replyTime = ['', ''])
       const startDate = replyTime[0]
       const endDate = replyTime[1]
       this.$emit('fetchData', { msg, startDate, endDate })

@@ -9,7 +9,8 @@
       </el-form-item>
       <el-form-item label="@ 时间">
         <el-date-picker size="mini" v-model="searchForm.atTime" type="datetimerange" start-placeholder="开始时间" clearable
-          end-placeholder="结束时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" :default-time="['09:00:00', '18:00:00']" />
+          end-placeholder="结束时间" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" :default-time="['09:00:00', '18:00:00']" 
+          @change="handleChange" />
       </el-form-item>
     </div>
     <div>
@@ -34,6 +35,9 @@ export default {
     }
   },
   methods: {
+    handleChange () {
+      this.onSearch()
+    },
     onReset() {
       this.searchForm = {
         content: '',
@@ -43,7 +47,8 @@ export default {
       this.$emit('fetchData')
     },
     onSearch() {
-      const { content, senderNick, atTime } = this.searchForm
+      let { content, senderNick, atTime } = this.searchForm
+      !atTime && (atTime = ['', ''])
       const startDate = atTime[0]
       const endDate = atTime[1]
       this.$emit('fetchData', { content, senderNick, startDate, endDate })

@@ -28,6 +28,7 @@ module.exports = app => {
 
   router.post('/api/atRecord/reSendAt', AtRecordController.reSendAt)
   router.get('/api/atRecord/getAtRecords', AtRecordController.getAtRecords)
+  router.post('/api/replyRecord/createReplyRecord', ReplyRecordController.createReplyRecord)
   router.get('/api/replyRecord/getReplyRecords', ReplyRecordController.getReplyRecords)
 
   app.use(router.routes(), router.allowedMethods())

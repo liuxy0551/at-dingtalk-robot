@@ -4,10 +4,10 @@ const { getUuid, getNow, getWhere, setCtxBody, getPage, getExclude, getInclude }
 
 class ReplyRecordService {
   // 创建
-  async createReplyRecord (appKey, robotName, body) {
+  async createReplyRecord (ctx) {
     try {
       const replyRecordId = getUuid()
-      const { url, msg, name } = body
+      const { url, msg, name } = ctx.request.body
       const replyRecord = { replyRecordId, url, msg, name }
       await db.ReplyRecord.create(replyRecord)
       return setCtxBody(200, replyRecordId, '保存成功')

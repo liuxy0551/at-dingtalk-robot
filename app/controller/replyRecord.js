@@ -9,6 +9,15 @@ class ReplyRecordController {
       ctx.body = error
     }
   }
+
+  // 新增
+  async createReplyRecord (ctx) {
+    try {
+      ctx.body = await ReplyRecordService.createReplyRecord(ctx)
+    } catch (error) {
+      ctx.body = error
+    }
+  }
 }
 
 module.exports = new ReplyRecordController()

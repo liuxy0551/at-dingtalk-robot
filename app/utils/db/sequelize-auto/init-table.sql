@@ -42,7 +42,7 @@ CREATE TABLE `ReplyRecord` (
   `replyRecordId` varchar(100) NOT NULL COMMENT '回复记录表id',
   `isDelete` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否删除 0 未删除，1 已删除',
   `url` varchar(200) NULL COMMENT '回复内容的推送 URL',
-  `msg` varchar(2000) NULL COMMENT '发出内容的 JSON 字符串',
+  `msg` varchar(3000) NULL COMMENT '回复内容的 JSON 字符串',
   `name` varchar(100) NULL COMMENT '群名称',
   `createTime` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updateTime` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',

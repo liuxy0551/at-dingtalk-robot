@@ -19,9 +19,9 @@ module.exports = function(sequelize, DataTypes) {
       comment: "回复内容的推送 URL"
     },
     msg: {
-      type: DataTypes.STRING(2000),
+      type: DataTypes.STRING(3000),
       allowNull: true,
-      comment: "发出内容的 JSON 字符串"
+      comment: "回复内容的 JSON 字符串"
     },
     name: {
       type: DataTypes.STRING(100),
