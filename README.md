@@ -9,6 +9,12 @@ yarn
 yarn dev
 ```
 
+## 部署项目
+
+```
+sh deploy.sh
+```
+
 ## Package 说明
 * koa # 主程
 * koa-router # 路由
