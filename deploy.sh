@@ -21,10 +21,8 @@ scp -P 22 -r $source2 $user@$server:$target2
 endTime=`date +"%Y-%m-%d %H:%M:%S"`
 echo "Upload over, $endTime"
 
-# 重启服务
-echo "\n================================= server restart ================================= \n"
-echo "ssh $user@$server \n"
-# ssh $user@$server "cd $target; yarn; pm2 restart ./pm2/config.json --env production; pm2 monit;"
-# ssh $user@$server "cd $target; yarn; pm2 restart ./pm2/config.json --env production; tailf pm2/logs/pm2-out.log -200;"
-ssh $user@$server "cd $target; yarn; pm2 restart ./pm2/config.json --env production;"
-echo "\n================================= server started ================================= \n"
+# # 重启服务
+# echo "\n================================= server restart ================================= \n"
+# echo "ssh $user@$server \n"
+# # ssh $user@$server "cd $target; yarn; pm2 restart ./pm2/config.json --env production; tailf pm2/logs/pm2-out.log -200;"
+# echo "\n================================= server started ================================= \n"

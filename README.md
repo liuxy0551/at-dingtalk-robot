@@ -15,6 +15,16 @@ yarn dev
 sh deploy.sh
 ```
 
+```
+ssh root@31.23.132.123
+```
+
+```
+cd /mnt/projects/node/at-dingtalk-robot
+pm2 restart ./pm2/config.json --env production
+tailf pm2/logs/pm2-out.log -200
+```
+
 ## Package 说明
 * koa # 主程
 * koa-router # 路由
