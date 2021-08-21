@@ -25,6 +25,16 @@ pm2 restart ./pm2/config.json --env production
 tailf pm2/logs/pm2-out.log -200
 ```
 
+
+## 初始化命令
+
+### 使用以下命令自动生成 sequelize model
+
+```
+yarn models
+```
+
+
 ## Package 说明
 * koa # 主程
 * koa-router # 路由
@@ -32,23 +42,6 @@ tailf pm2/logs/pm2-out.log -200
 * koa-logger # 日志
 * nodemon # nodemon是一种工具，可在检测到目录中的文件更改时通过自动重新启动节点应用程序来帮助开发基于node.js的应用程序
 
-
-## 初始化命令
-
-### 1、使用以下命令自动生成 sequelize model
-
-```
-yarn models
-```
-
-### 2、服务器上更新代码并重启服务
-
-```
-cd /mnt/projects/node/at-dingtalk-robot/
-./start.sh
-
-tailf pm2/logs/pm2-out.log  -200
-```
 
 ## @ 记录
 
