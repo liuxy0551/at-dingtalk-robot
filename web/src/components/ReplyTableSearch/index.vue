@@ -43,7 +43,7 @@ export default {
     },
     onSearch() {
       let { msg, replyTime } = this.searchForm
-      !replyTime && (replyTime = ['', ''])
+      replyTime === null && (replyTime = ['', ''])
       const startDate = replyTime[0]
       const endDate = replyTime[1]
       this.$emit('fetchData', { msg, startDate, endDate })

@@ -48,7 +48,7 @@ export default {
     },
     onSearch() {
       let { content, senderNick, atTime } = this.searchForm
-      !atTime && (atTime = ['', ''])
+      atTime === null && (atTime = ['', ''])
       const startDate = atTime[0]
       const endDate = atTime[1]
       this.$emit('fetchData', { content, senderNick, startDate, endDate })
