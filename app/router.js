@@ -26,6 +26,7 @@ module.exports = app => {
   router.post('/api/robot/deleteRobot', RobotController.deleteRobot)
   router.get('/api/robot/getRobots', RobotController.getRobots)
 
+  router.post('/api/atRecord/reSendAt', AtRecordController.reSendAt)
   router.get('/api/atRecord/getAtRecords', AtRecordController.getAtRecords)
   router.get('/api/replyRecord/getReplyRecords', ReplyRecordController.getReplyRecords)
 

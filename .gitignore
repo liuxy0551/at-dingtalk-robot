@@ -7,5 +7,3 @@ node_modules
 pm2/logs/*.log
 npm-error.log
 yarn-error.log
-
-utils/wechat/*.json

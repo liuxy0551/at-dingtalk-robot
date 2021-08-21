@@ -1,6 +1,6 @@
 # at-dingtalk-robot | <a href="CHANGELOG.md" target="_black">CHANGELOG</a>
 
-在钉钉群里艾特企业内部机器人时接收钉钉推送的消息
+在钉钉群里 @ 企业内部机器人时接收钉钉推送的消息，验证中心
 
 ## 启动项目
 

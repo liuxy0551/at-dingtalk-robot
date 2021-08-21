@@ -26,7 +26,7 @@ const getWhere = (params = {}) => {
   return { offset: (page - 1) * pageSize, limit: pageSize, page, pageSize }
 }
 
-// 艾特机器人时 sign
+// @ 机器人时 sign
 const getAtSign = (appSecret, time) => {
   const str = `${ time }\n${ appSecret }`
   const sign = crypto.createHmac('sha256', appSecret).update(str).digest('base64')

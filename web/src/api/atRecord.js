@@ -7,3 +7,11 @@ export function getAtRecords(params) {
     params
   })
 }
+
+export function reSendAt(data) {
+  return request({
+    url: '/atRecord/reSendAt',
+    method: 'post',
+    data
+  })
+}

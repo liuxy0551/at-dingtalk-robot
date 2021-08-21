@@ -40,10 +40,9 @@
         </template>
       </el-table-column>
     </el-table>
-
     <Pagination :page="page" :pageSize="pageSize" :total="total" @pageChange="pageChange" @pageSizeChange="pageSizeChange" />
 
-    <el-dialog :title="`${ robotForm.robotId ? '编辑' : '新增' }机器人`" :visible.sync="dialogVisible" :close-on-click-modal="false" :close-on-press-escape="false">
+    <el-dialog :title="`${ robotForm.robotId ? '编辑' : '新增' }机器人`" :visible.sync="dialogVisible" :close-on-click-modal="false" @closed="handleClosed">
       <el-form class="at-form" :model="robotForm" :rules="rules" label-width="100px" ref="robotFormRef">
         <el-form-item label="机器人名称" prop="name">
           <el-input v-model="robotForm.name" placeholder="请输入机器人名称" maxlength="100" />
@@ -147,8 +146,6 @@ export default {
     },
     submitRobotForm() {
       this.$refs.robotFormRef.validate().then(() => {
-        console.log({...this.robotForm})
-
         this.createLoading = true
         if (this.robotForm.robotId) { // 编辑
           updateRobot(this.robotForm).then(res => {
@@ -184,6 +181,15 @@ export default {
     editRobot(item) {
       this.robotForm = { ...item }
       this.dialogVisible = true
+    },
+    handleClosed() {
+      this.robotForm = {
+        name: '',
+        appKey: '',
+        appSecret: '',
+        apiUrl: '',
+        note: ''
+      }
     }
   },
   components: { Pagination }
@@ -202,14 +208,5 @@ export default {
 .at-form {
   width: 80%;
   margin: 0 auto;
-}
-.row-flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.help-icon {
-  font-size: 18px;
-  margin: 0 -30px 0 10px
 }
 </style>

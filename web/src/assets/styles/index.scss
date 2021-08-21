@@ -3,6 +3,7 @@
 @import './transition.scss';
 @import './element-ui.scss';
 @import './sidebar.scss';
+@import './myCss.scss';
 
 body {
   height: 100%;
@@ -69,5 +70,5 @@ div:focus {
 }
 
 .el-tooltip__popper {
-  max-width: 600px;
+  max-width: 500px;
 }

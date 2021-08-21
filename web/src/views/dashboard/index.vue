@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div class="dashboard-text">Hi ! {{ name }} ~</div>
     <div class="dashboard-tip tip">at-dingtalk-robot 接收钉钉推送消息统一服务</div>
-    <div class="dashboard-tip">用于在钉钉群里艾特企业内部机器人时，钉钉推送消息的校验</div>
+    <div class="dashboard-tip">在钉钉群里 @ 企业内部机器人时接收钉钉推送的消息，验证中心</div>
   </div>
 </template>
 

@@ -4,32 +4,29 @@ const { getWhere, getAtSign, getNow } = require('../utils')
 const db = require('../utils/db')
 
 class AtRobotController {
-  // 在钉钉群里艾特企业内部机器人时接收钉钉推送的消息
+  // 在钉钉群里 @ 企业内部机器人时接收钉钉推送的消息，验证中心
   async atRobot (ctx) {
     try {
+      // 根据机器人的 appKey 从数据库查询 appSecret
       const { appKey } = ctx.query
       if (!appKey) throw { code: 401, message: '需要 appKey' }
-      const { name, appSecret, apiUrl } = await AtRobotController.getRobotInfo(appKey)
+      const { name, appSecret, apiUrl } = await db.Robot.findOne({
+        where: getWhere({ appKey }),
+        raw: true
+      })
+
+      // 校验是否从钉钉推送来的消息
       const { sign, timestamp } = ctx.request.header
       await AtRobotController.checkIsDingtalk(appSecret, sign, timestamp)
       
       // 往数据库存 @ 记录
       AtRecordService.createAtRecord(appKey, name, ctx.request.body)
 
-      ctx.body = await AtRobotService.atRobot(ctx, apiUrl, name)
+      ctx.body = await AtRobotService.sendToDeveloper(ctx.request.body, apiUrl, name)
     } catch (error) {
       console.log(getNow(), error)
       ctx.body = error
     }
-  }
-
-  // 根据机器人的 appKey 从数据库查询 appSecret
-  static async getRobotInfo (appKey) {
-    const robot = await db.Robot.findOne({
-      where: getWhere({ appKey }),
-      raw: true
-    })
-    return robot
   }
 
   // 检查消息是否来自钉钉的合法请求

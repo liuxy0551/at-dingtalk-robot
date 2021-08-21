@@ -8,12 +8,12 @@
           <el-button type="text" size="small" @click="previewAtRecord(scope.row)">{{ (page - 1) * pageSize + scope.$index + 1 }}</el-button>
         </template>
       </el-table-column>
-      <el-table-column label="机器人名称" align="center" width="160">
+      <el-table-column label="机器人名称" align="center" width="160" show-overflow-tooltip>
         <template slot-scope="scope">
           {{ scope.row.robotName || '--' }}
         </template>
       </el-table-column>
-      <el-table-column label="群聊名称" width="160" align="center">
+      <el-table-column label="群聊名称" align="center" width="160" show-overflow-tooltip>
         <template slot-scope="scope">
           {{ scope.row.conversationTitle || '--' }}
         </template>
@@ -28,15 +28,33 @@
           {{ scope.row.senderNick }}
         </template>
       </el-table-column>
+      <el-table-column label="会话是否过期" width="140" align="center">
+        <template slot-scope="scope">
+          <el-tag :type="scope.row.isExpired ? 'info' : 'success'">{{ scope.row.isExpired ? '已过期' : '未过期' }}</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="@ 时间" width="200" align="center">
         <template slot-scope="scope">
           {{ scope.row.createAt }}
         </template>
       </el-table-column>
-      <el-table-column fixed="right" label="详情" align="center" width="160">
+      <el-table-column label="会话过期时间" width="200" align="center">
         <template slot-scope="scope">
-          <el-popconfirm title="重发会将内容再次发送给钉钉机器人，并将收到机器人的回复，确认？">
-            <el-button size="small" slot="reference" disabled @click="reSend(scope.row)">模拟重发</el-button>
+          {{ scope.row.sessionWebhookExpiredTime }}
+        </template>
+      </el-table-column>
+      <el-table-column fixed="right" label="详情" align="center" width="160">
+        <template slot="header" slot-scope="scope">
+          <div class="row-flex">
+            详情
+            <el-tooltip class="item" effect="dark" content="已过期的会话不能进行模拟重发" placement="top-end">
+              <i class="el-icon-question help-icon"></i>
+            </el-tooltip>
+          </div>
+        </template>
+        <template slot-scope="scope">
+          <el-popconfirm title="重发会将内容再次发送给钉钉机器人，并将收到机器人的回复，确认？" @onConfirm="reSend(scope.row)">
+            <el-button size="mini" :disabled="scope.row.isExpired" slot="reference">模拟重发</el-button>
           </el-popconfirm>
         </template>
       </el-table-column>
@@ -53,7 +71,8 @@
 <script>
 import AtTableSearch from '@/components/AtTableSearch'
 import Pagination from '@/components/Pagination'
-import { getAtRecords } from '@/api/atRecord'
+import { getAtRecords, reSendAt } from '@/api/atRecord'
+import { Message } from 'element-ui'
 
 export default {
   data() {
@@ -101,8 +120,24 @@ export default {
       this.dialogVisible = true
     },
     reSend(item) {
-      // this.atRecord = item
-      // this.dialogVisible = true
+      const { content, senderStaffId, conversationTitle, sessionWebhook, senderNick, senderId, isDev, appKey } = item
+      const params = {
+        text: {
+          content
+        },
+        senderStaffId,
+        conversationTitle,
+        sessionWebhook,
+        senderNick,
+        senderId,
+        isDev,
+        appKey
+      }
+      reSendAt(params).then(({ data }) => {
+        const { result = { errcode: '', errmsg: '' } } = data
+        if (result.errcode === 0) return Message.success('模拟重发成功')
+        Message.error(`发送失败 ${ result.errmsg }`)
+      })
     }
   },
   components: { AtTableSearch, Pagination }
