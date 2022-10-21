@@ -11,6 +11,8 @@ yarn dev
 
 ## 部署项目
 
+将 deploy.sh 脚本中的服务器地址修改为正确地址，然后执行：
+
 ```
 sh deploy.sh
 ```
@@ -21,8 +23,7 @@ ssh root@31.23.132.123
 
 ```
 cd /mnt/projects/node/at-dingtalk-robot
-pm2 restart ./pm2/config.json --env production
-tailf pm2/logs/pm2-out.log -200
+./start.sh
 ```
 
 
