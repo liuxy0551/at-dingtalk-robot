@@ -5,7 +5,7 @@
 user="root"
 server="31.23.132.123"
 # source="app/ config/ node_modules pm2/ app.js CHANGELOG.md package.json README.md deploy.sh yarn.lock"
-source="app/ config/ app.js CHANGELOG.md package.json README.md deploy.sh yarn.lock"
+source="app/ config/ pm2/ app.js CHANGELOG.md package.json README.md deploy.sh start.sh yarn.lock"
 target="/mnt/projects/node/at-dingtalk-robot"
 
 source2="web/dist/"
