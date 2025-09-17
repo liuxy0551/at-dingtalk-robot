@@ -7,6 +7,7 @@ const AtRobotController = require('./controller/atRobot')
 const RobotController = require('./controller/robot')
 const AtRecordController = require('./controller/atRecord')
 const ReplyRecordController = require('./controller/replyRecord')
+const UserController = require('./controller/user')
 
 const router = new Router()
 
@@ -18,7 +19,10 @@ module.exports = app => {
   // 验证消息的确来自微信服务器
   router.get('/', ctx => { ctx.body = `hello at-dingtalk-robot, v${ getVersion() }` })
   router.get('/api', ctx => { ctx.body = `hello at-dingtalk-robot, v${ getVersion() }` })
-  
+
+  router.post('/api/user/login', UserController.login)
+  router.post('/api/user/getInfo', UserController.getUserInfo)
+
   router.post('/api/atRobot', AtRobotController.atRobot)
 
   router.post('/api/robot/createRobot', RobotController.createRobot)

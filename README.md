@@ -1,17 +1,25 @@
 # at-dingtalk-robot | <a href="CHANGELOG.md" target="_black">CHANGELOG</a>
 
-在钉钉群里 @ 企业内部机器人时接收钉钉推送的消息，验证中心
+在钉钉群里 @企业内部机器人 时接收钉钉推送的消息，验证中心
 
-## 启动项目
+## 启动服务端项目
 
 ```
 yarn
 yarn dev
 ```
 
+## 启动页面端项目
+
+```
+cd web
+yarn
+yarn dev
+```
+
 ## 部署项目
 
-将 deploy.sh 脚本中的服务器地址修改为正确地址，然后执行：
+将 deploy.sh 脚本中的服务器地址 (server) 修改为正确地址，然后依次执行：
 
 ```
 sh deploy.sh

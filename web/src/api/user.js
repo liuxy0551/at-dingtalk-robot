@@ -2,23 +2,16 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/at-dingtalk-robot/user/login',
+    url: '/user/login',
     method: 'post',
     data
   })
 }
 
-export function getInfo(token) {
+export function getUserInfo(data) {
   return request({
-    url: '/at-dingtalk-robot/user/info',
-    method: 'get',
-    params: { token }
-  })
-}
-
-export function logout() {
-  return request({
-    url: '/at-dingtalk-robot/user/logout',
-    method: 'post'
+    url: '/user/getInfo',
+    method: 'post',
+    data
   })
 }

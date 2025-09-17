@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div class="dashboard-text">Hi ! {{ name }} ~</div>
     <div class="dashboard-tip tip">at-dingtalk-robot<span style="padding: 0 20px 0 10px" v-if="version">v{{ version }}</span> 接收钉钉推送消息统一服务</div>
-    <div class="dashboard-tip">在钉钉群里 @ 企业内部机器人时接收钉钉推送的消息，验证中心</div>
+    <div class="dashboard-tip">在钉钉群里 @企业内部机器人 时接收钉钉推送的消息，验证中心</div>
   </div>
 </template>
 

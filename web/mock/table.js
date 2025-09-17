@@ -13,7 +13,7 @@ const data = Mock.mock({
 
 module.exports = [
   {
-    url: '/at-dingtalk-robot/table/list',
+    url: '/table/list',
     type: 'get',
     response: config => {
       const items = data.items

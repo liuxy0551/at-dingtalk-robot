@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const logger = require('koa-logger')
 const compress = require('koa-compress')
+const cors = require('@koa/cors');
 const koaBody = require('koa-body')
 const static = require('koa-static')
 const { appPort } = require('./config/app.config')
@@ -8,6 +9,9 @@ const middles = require('./app/middleWares')
 const router = require('./app/router')
 
 const app = new Koa()
+
+// 跨域
+app.use(cors());
 
 // 静态页面
 app.use(static(`${ __dirname }/web/dist`))

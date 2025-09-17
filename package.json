@@ -18,6 +18,7 @@
   "author": "liuxy0551@qq.com",
   "license": "ISC",
   "dependencies": {
+    "@koa/cors": "^5.0.0",
     "axios": "^0.21.1",
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
@@ -31,6 +32,12 @@
     "sha1": "^1.1.1"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "nodemon": "^2.0.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
