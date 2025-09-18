@@ -23,10 +23,10 @@ class AtRecordService {
         senderCorpId,
         sessionWebhook,
         sessionWebhookExpiredTime: getNow(sessionWebhookExpiredTime, false),
-        isAdmin: isAdmin ? '是' : '否', 
+        isAdmin: isAdmin ? '是' : '否',
         chatbotUserId
       }
-     
+
       await db.AtRecord.create(atRecord)
       return setCtxBody(200, atRecordId, '保存成功')
     } catch (error) {

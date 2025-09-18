@@ -18,7 +18,7 @@ class AtRobotController {
       // 校验是否从钉钉推送来的消息
       const { sign, timestamp } = ctx.request.header
       await AtRobotController.checkIsDingtalk(appSecret, sign, timestamp)
-      
+
       // 往数据库存 @ 记录
       AtRecordService.createAtRecord(appKey, name, ctx.request.body)
 

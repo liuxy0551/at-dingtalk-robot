@@ -8,8 +8,8 @@ server="31.23.132.123"
 source="app/ config/ pm2/ app.js CHANGELOG.md package.json README.md deploy.sh start.sh yarn.lock"
 target="/mnt/projects/node/at-dingtalk-robot"
 
-source2="web/dist/"
-target2="/mnt/projects/node/at-dingtalk-robot/web/dist/"
+source2="web/dist/*"
+target2="/mnt/projects/front/at-dingtalk-robot-admin/"
 
 startTime=$(date +%Y-%m-%d\ %H:%M:%S)
 echo "Upload start, $startTime"
