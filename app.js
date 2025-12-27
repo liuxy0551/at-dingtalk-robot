@@ -14,7 +14,7 @@ const app = new Koa()
 app.use(cors());
 
 // 静态页面
-// app.use(static(`${ __dirname }/web/dist`))
+app.use(static(`${ __dirname }/web/dist`))
 
 app.use(logger())
 app.use(compress({

@@ -1,6 +1,18 @@
 # <a href="https://github.com/liuxy0551/at-dingtalk-robot" target="_black">at-dingtalk-robot</a>
 
 
+## v1.1.5
+
+2025-12-27
+
+&emsp;&emsp;1、admin 页面由服务端托管  
+
+## v1.1.4
+
+2025-09-18
+
+&emsp;&emsp;1、admin 管理页面单独部署  
+
 ## v1.1.3
 
 2021-08-21

@@ -5,19 +5,19 @@
 ## 启动服务端项目
 
 ```
-yarn
-yarn dev
+npm i
+npm run dev
 ```
 
 ## 启动页面端项目
 
 ```
 cd web
-yarn
-yarn dev
+npm i
+npm run dev
 ```
 
-## 部署项目
+## 部署项目（已废弃）
 
 将 deploy.sh 脚本中的服务器地址 (server) 修改为正确地址，然后依次执行：
 
@@ -40,7 +40,7 @@ cd /mnt/projects/node/at-dingtalk-robot
 ### 使用以下命令自动生成 sequelize model
 
 ```
-yarn models
+npm run models
 ```
 
 
@@ -54,9 +54,9 @@ yarn models
 
 ## @ 记录
 
-http://at-dingtalk-robot.liuxianyu.cn/admin#/at-record/index
+https://at-dingtalk-robot.liuxianyu.cn/admin#/at-record/index
 
 
 ## 回复记录
 
-http://at-dingtalk-robot.liuxianyu.cn/admin#/reply-record/index
+https://at-dingtalk-robot.liuxianyu.cn/admin#/reply-record/index
